@@ -6,11 +6,14 @@ import Events from "./Events"
 import AppContext from "../contexts/AppContext"
 import { DELETE_EVENT, CREATE_EVENT, DELETE_ALL_EVENT } from "../actions";
 
-console.log(AppContext);
 const App = () => {
   const defaltEvent = { title: "", body: "" }
   const [event, setEvent] = useState(defaltEvent);
-  const [state, dispatch] = useReducer(reducer, []);
+  const initialState = {
+    events: [],
+    logs: []
+  }
+  const [state, dispatch] = useReducer(reducer, initialState);
 
   const addEvent = (e) => {
     e.preventDefault();

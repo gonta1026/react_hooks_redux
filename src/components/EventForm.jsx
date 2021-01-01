@@ -7,7 +7,7 @@ const Event = () => {
     const { title, body } = event;
 
     const onCreatble = event.title === "" | event.body === "";
-    const onAllDeletable = !state.length;
+    const onAllDeletable = !state.events.length;
 
     return (
         <>
