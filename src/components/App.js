@@ -44,10 +44,10 @@ const App = () => {
   }
 
   return (
-    <AppContext.Provider value={handleClickDelete}>
+    <AppContext.Provider value={{ formProps, state, handleClickDelete }}>
       <div className="container-fluid">
-        <EventForm formProps={formProps} />
-        <Events state={state} />
+        <EventForm />
+        <Events />
       </div>
     </AppContext.Provider>
   );

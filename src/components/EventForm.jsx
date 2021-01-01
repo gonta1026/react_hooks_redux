@@ -1,6 +1,8 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import AppContext from '../contexts/AppContext';
 
-const Event = ({ formProps }) => {
+const Event = () => {
+    const { formProps } = useContext(AppContext)
     const { addEvent, event, handleClickAllDelete, setEvent, state } = formProps;
     const { title, body } = event;
 

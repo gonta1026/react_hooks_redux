@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import AppContext from '../contexts/AppContext';
 const Event = ({ event }) => {
-    const handleClickDelete = useContext(AppContext)
+    const { handleClickDelete } = useContext(AppContext)
     return (
         <tr>
             <td>{event.id}</td>
