@@ -11,7 +11,7 @@ const App = () => {
   const [event, setEvent] = useState(defaltEvent);
   const initialState = {
     events: [],
-    logs: []
+    operationLogs: []
   }
   const [state, dispatch] = useReducer(reducer, initialState);
 

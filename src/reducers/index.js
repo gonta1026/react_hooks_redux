@@ -1,8 +1,8 @@
 import { combineReducers } from 'redux'
 import events from './events'
-// import counter from './counter'
+import operationLogs from './operationLogs'
 
 export default combineReducers({
     events,
-    // counter
+    operationLogs
 })
