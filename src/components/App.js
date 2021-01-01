@@ -3,7 +3,10 @@ import reducer from "../reducers";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import EventForm from "./EventForm"
 import Events from "./Events"
+import AppContext from "../contexts/AppContext"
 import { DELETE_EVENT, CREATE_EVENT, DELETE_ALL_EVENT } from "../actions";
+
+console.log(AppContext);
 const App = () => {
   const defaltEvent = { title: "", body: "" }
   const [event, setEvent] = useState(defaltEvent);
@@ -41,11 +44,12 @@ const App = () => {
   }
 
   return (
-    <div className="container-fluid">
-      <EventForm formProps={formProps} />
-      <Events state={state} handleClickDelete={handleClickDelete} />
-    </div>
-
+    <AppContext.Provider value={handleClickDelete}>
+      <div className="container-fluid">
+        <EventForm formProps={formProps} />
+        <Events state={state} />
+      </div>
+    </AppContext.Provider>
   );
 }
 

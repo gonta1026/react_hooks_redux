@@ -1,7 +1,7 @@
 import React from 'react';
-import Event from "./Event"
+import Event from '../components/Event';
 
-const Events = ({ state, handleClickDelete }) => {
+const Events = ({ state }) => {
     return (
         <>
             <h4 className="">イベント一覧</h4>
@@ -15,7 +15,7 @@ const Events = ({ state, handleClickDelete }) => {
                     </tr>
                 </thead>
                 <tbody>
-                    {state.map((event, index) => (<Event key={index} event={event} handleClickDelete={handleClickDelete} />))}
+                    {state.map((event, index) => (<Event key={index} event={event} />))}
                 </tbody>
             </table>
         </>
