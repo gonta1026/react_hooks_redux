@@ -1,6 +1,6 @@
 import React from 'react';
 
-const Event = ({event, handleClickDelete}) => {
+const Event = ({ event, handleClickDelete }) => {
     return (
         <tr>
             <td>{event.id}</td>
