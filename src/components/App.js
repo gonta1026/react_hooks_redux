@@ -3,6 +3,7 @@ import reducer from "../reducers";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import EventForm from "./EventForm"
 import Events from "./Events"
+import { DELETE_EVENT, CREATE_EVENT, DELETE_ALL_EVENT } from "../actions";
 const App = () => {
   const defaltEvent = { title: "", body: "" }
   const [event, setEvent] = useState(defaltEvent);
@@ -10,7 +11,7 @@ const App = () => {
 
   const addEvent = (e) => {
     e.preventDefault();
-    dispatch({ type: "CREATE_EVENT", event })
+    dispatch({ type: CREATE_EVENT, event })
     setEvent(defaltEvent)
   }
 
@@ -19,7 +20,7 @@ const App = () => {
     e.preventDefault();
     const result = window.confirm(`id=${id}を削除してもいいですか？`)
     if (result) {
-      dispatch({ type: "DELETE_EVENT", id })
+      dispatch({ type: DELETE_EVENT, id })
     }
   }
 
@@ -27,7 +28,7 @@ const App = () => {
     e.preventDefault();
     const result = window.confirm("全て削除してもいいですか？")
     if (result) {
-      dispatch({ type: "DELETE_ALL_EVENT" })
+      dispatch({ type: DELETE_ALL_EVENT })
     }
   }
 
