@@ -1,7 +1,8 @@
 import React, { useContext } from 'react';
 import AppContext from '../contexts/AppContext';
-const Event = ({ event }) => {
-    const { handleClickDelete } = useContext(AppContext)
+const Event = ({ event, handleClickDelete }) => {
+    console.log("Event Component render!!")
+    // const { handleClickDelete } = useContext(AppContext)
     return (
         <tr>
             <td>{event.id}</td>

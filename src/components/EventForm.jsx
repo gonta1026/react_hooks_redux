@@ -1,8 +1,9 @@
-import React, { useContext } from 'react';
+import React, { useContext, memo } from 'react';
 import AppContext from '../contexts/AppContext';
 
-const Event = () => {
-    const { formProps } = useContext(AppContext)
+const Event = memo(({ formProps }) => {
+    console.log("EventForm Component render!!")
+    // const { formProps } = useContext(AppContext)
     const { addEvent, event, handleClickAllDelete, setEvent, state } = formProps;
     const { title, body } = event;
 
@@ -28,5 +29,5 @@ const Event = () => {
             </form>
         </>
     );
-}
+});
 export default Event;

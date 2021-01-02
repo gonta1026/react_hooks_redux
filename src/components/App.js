@@ -1,9 +1,9 @@
-import React, { useState, useReducer } from 'react';
+import React, { useState, useReducer, useCallback, useMemo } from 'react';
 import reducer from "../reducers";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import EventForm from "./EventForm"
 import Events from "./Events"
-import AppContext from "../contexts/AppContext"
+// import AppContext from "../contexts/AppContext"
 import { DELETE_EVENT, CREATE_EVENT, DELETE_ALL_EVENT } from "../actions";
 
 const App = () => {
@@ -15,20 +15,19 @@ const App = () => {
   }
   const [state, dispatch] = useReducer(reducer, initialState);
 
-  const addEvent = (e) => {
+  const addEvent = useCallback((e) => {
     e.preventDefault();
     dispatch({ type: CREATE_EVENT, event })
     setEvent(defaltEvent)
-  }
+  }, [defaltEvent, event])
 
-  const handleClickDelete = (e, id) => {
-    console.log(e, id)
+  const handleClickDelete = useCallback((e, id) => {
     e.preventDefault();
     const result = window.confirm(`id=${id}を削除してもいいですか？`)
     if (result) {
       dispatch({ type: DELETE_EVENT, id })
     }
-  }
+  }, [])
 
   const handleClickAllDelete = (e) => {
     e.preventDefault();
@@ -47,12 +46,12 @@ const App = () => {
   }
 
   return (
-    <AppContext.Provider value={{ formProps, state, handleClickDelete }}>
+    <>
       <div className="container-fluid">
-        <EventForm />
-        <Events />
+        <EventForm formProps={formProps} />
+        <Events handleClickDelete={handleClickDelete} state={state} />
       </div>
-    </AppContext.Provider>
+    </>
   );
 }
 
